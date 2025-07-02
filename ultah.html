@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff2d75;
+            --text-dark: #2d3748;
+            --text-light: #f8f9fa;
+            --shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-light);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: underline 1.5s 1s forwards;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+        
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: cardSlideUp 1s ease-out;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            animation: scaleIn 1s ease-out;
+        }
+        
+        .hero-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .btn-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            opacity: 0;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes underline {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        
+        @keyframes cardSlideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Selamat Ulang Tahun</h1>
+            <p class="subtitle">Merayakan hari spesialmu dengan penuh sukacita</p>
+        </header>
+        
+        <div class="content">
+            <div class="card">
+                <div class="message">
+                    <p>Di hari yang istimewa ini, kami ingin mengucapkan selamat ulang tahun dengan penuh kebahagiaan.</p>
+                    <p>Semoga tahun ini membawa lebih banyak kebahagiaan, kesuksesan, dan petualangan baru dalam hidupmu.</p>
+                </div>
+                
+                <img src="c:\Users\VIVOBOOK 14\Pictures\Camera Roll\WIN_20250702_14_14_48_Pro.jpg" alt="Elegant birthday celebration with balloons and flowers in gold and white theme" class="hero-image">
+                
+                <div class="btn-container">
+                    <button class="btn btn-primary" id="wish-btn">
+                        Kirim Ucapan
+                    </button>
+                    <button class="btn btn-outline" id="music-btn">
+                        Putar Musik
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Created with ❤️ for your special day</p>
+        </footer>
+    </div>
+    
+    <div id="confetti-container"></div>
+    
+    <audio id="birthday-song" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Confetti effect
+            function createConfetti() {
+                const confettiContainer = document.getElementById('confetti-container');
+                const colors = ['#ff2d75', '#6a11cb', '#2575fc', '#ffd700', '#ffffff'];
+                
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.opacity = Math.random() * 0.8 + 0.2;
+                    confetti.style.width = Math.random() * 10 + 5 + 'px';
+                    confetti.style.height = Math.random() * 10 + 5 + 'px';
+                    confetti.style.position = 'fixed';
+                    confetti.style.zIndex = '1';
+                    
+                    confettiContainer.appendChild(confetti);
+                    
+                    animateConfetti(confetti);
+                }
+            }
+            
+            function animateConfetti(el) {
+                const posX = Math.random() * window.innerWidth;
+                const posY = -50;
+                const rotation = Math.random() * 360;
+                
+                el.style.transform = `translate3d(${posX}px, ${posY}px, 0) rotate(${rotation}deg)`;
+                
+                const animation = el.animate(
+                    [
+                        { transform: `translate3d(${posX}px, ${posY}px, 0) rotate(${rotation}deg)`, opacity: 0 },
+                        { transform: `translate3d(${posX + Math.random() * 100 - 50}px, ${window.innerHeight + 100}px, 0) rotate(${rotation + 360}deg)`, opacity: 1 }
+                    ],
+                    {
+                        duration: Math.random() * 3000 + 2000,
+                        easing: 'cubic-bezier(0.1,0.2,0.8,1)'
+                    }
+                );
+                
+                animation.onfinish = () => {
+                    el.remove();
+                };
+            }
+            
+            // Button interactions
+            const wishBtn = document.getElementById('wish-btn');
+            const musicBtn = document.getElementById('music-btn');
+            const birthdaySong = document.getElementById('birthday-song');
+            let isPlaying = false;
+            
+            wishBtn.addEventListener('click', function() {
+                createConfetti();
+                this.textContent = '🎉 Terima Kasih!';
+                setTimeout(() => {
+                    this.textContent = 'Kirim Ucapan';
+                }, 2000);
+            });
+            
+            musicBtn.addEventListener('click', function() {
+                if (isPlaying) {
+                    birthdaySong.pause();
+                    this.innerHTML = 'Putar Musik';
+                    isPlaying = false;
+                } else {
+                    birthdaySong.play();
+                    this.innerHTML = 'Hentikan Musik';
+                    isPlaying = true;
+                }
+            });
+            
+            // Add floating effect to card
+            const card = document.querySelector('.card');
+            card.style.animation = 'float 6s ease-in-out infinite';
+            
+            // Initial small confetti
+            setTimeout(createConfetti, 1000);
+        });
+    </script>
+</body>
+</html>
